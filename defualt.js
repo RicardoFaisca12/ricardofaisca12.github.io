@@ -24,7 +24,7 @@ function upload(){
         uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL){
            //get your image download url here and upload it to databse
            //our path where data is stored ...push is used so that every post have unique id
-           firebase.database().ref('blogs/').push().set({
+           firebase.database().ref('images/').push().set({
                  text:post,
                  imageURL:downloadURL
            },function(error){
@@ -48,7 +48,7 @@ window.onload=function(){
 
 
 function getdata(){
-    firebase.database().ref('blogs/').once('value').then(function(snapshot){
+    firebase.database().ref('images/').once('value').then(function(snapshot){
       //get your posts div
       var posts_div=document.getElementById('posts');
       //remove all remaining data in that div
@@ -72,7 +72,7 @@ function getdata(){
 }
 
 function delete_post(key){
-    firebase.database().ref('blogs/'+key).remove();
+    firebase.database().ref('images/'+key).remove();
     getdata();
 
 }
