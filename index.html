@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>wow</title>
-</head>
-<body>
-<h1>asdad</h1>
-</body>
-</html>
+<!-- Firebase Storage Rules -->
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      allow read, write: if request.auth == null;
+    }
+  }
+}
